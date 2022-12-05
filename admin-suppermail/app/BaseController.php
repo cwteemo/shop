@@ -3,6 +3,7 @@ declare (strict_types = 1);
 
 namespace app;
 
+use app\lib\Res;
 use think\App;
 use think\exception\ValidateException;
 use think\Validate;
@@ -14,7 +15,7 @@ abstract class BaseController
 {
     /**
      * Request实例
-     * @var \think\Request
+     * @var \app\Request
      */
     protected $request;
 
@@ -57,6 +58,13 @@ abstract class BaseController
         $this->app     = $app;
         $this->request = $this->app->request;
 
+        if (!$this->model_class) {
+            $class_name = class_basename($this);
+            $this->model_class = "\app\model\\$class_name";
+        }
+
+        $this->model   = new $this->model_class;
+
         // 控制器初始化
         $this->initialize();
     }
@@ -86,6 +94,10 @@ abstract class BaseController
                 [$validate, $scene] = explode('.', $validate);
             }
             $class = false !== strpos($validate, '\\') ? $validate : $this->app->parseClass('validate', $validate);
+            if (!class_exists($class)) {
+                // 没有验证类可以忽略验证
+                return true;
+            }
             $v     = new $class();
             if (!empty($scene)) {
                 $v->scene($scene);
@@ -99,7 +111,11 @@ abstract class BaseController
             $v->batch(true);
         }
 
-        return $v->failException(true)->check($data);
+        try {
+            return $v->failException(true)->check($data);
+        } catch (ValidateException $e) {
+            Res::returnErr($e->getMessage());
+        }
     }
 
 }

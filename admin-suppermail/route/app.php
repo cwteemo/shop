@@ -9,5 +9,11 @@
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
 use think\facade\Route;
+Route::rest([
+    'read'      => ['GET', '/read', 'read'],
+    'edit'      => ['GET', '/edit', 'edit'],
+    'update'    => ['PUT', '', 'update'],
+    'delete'    => ['DELETE', '', 'delete']
+]);
 Route::resource('goods',      'Shopgoods');
 Route::resource('file',      'ShopImg');
