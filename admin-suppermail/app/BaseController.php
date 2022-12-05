@@ -25,6 +25,17 @@ abstract class BaseController
     protected $app;
 
     /**
+     * @var string
+     */
+    protected $model_class = null;
+
+    /**
+     * 数据库模型
+     * @var \app\model\Base
+     */
+    protected $model;
+
+    /**
      * 是否批量验证
      * @var bool
      */

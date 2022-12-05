@@ -2,8 +2,25 @@
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
-      <excludeFolder url="file://$MODULE_DIR$/temp" />
+      <sourceFolder url="file://$MODULE_DIR$/admin-suppermail/extend" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/admin-suppermail/app" isTestSource="false" packagePrefix="app\" />
       <excludeFolder url="file://$MODULE_DIR$/.tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/admin-suppermail/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/admin-suppermail/vendor/psr/container" />
+      <excludeFolder url="file://$MODULE_DIR$/admin-suppermail/vendor/psr/http-message" />
+      <excludeFolder url="file://$MODULE_DIR$/admin-suppermail/vendor/psr/log" />
+      <excludeFolder url="file://$MODULE_DIR$/admin-suppermail/vendor/psr/simple-cache" />
+      <excludeFolder url="file://$MODULE_DIR$/admin-suppermail/vendor/symfony/polyfill-mbstring" />
+      <excludeFolder url="file://$MODULE_DIR$/admin-suppermail/vendor/symfony/polyfill-php72" />
+      <excludeFolder url="file://$MODULE_DIR$/admin-suppermail/vendor/symfony/polyfill-php80" />
+      <excludeFolder url="file://$MODULE_DIR$/admin-suppermail/vendor/symfony/var-dumper" />
+      <excludeFolder url="file://$MODULE_DIR$/admin-suppermail/vendor/topthink/framework" />
+      <excludeFolder url="file://$MODULE_DIR$/admin-suppermail/vendor/topthink/think-helper" />
+      <excludeFolder url="file://$MODULE_DIR$/admin-suppermail/vendor/topthink/think-orm" />
+      <excludeFolder url="file://$MODULE_DIR$/admin-suppermail/vendor/topthink/think-trace" />
+      <excludeFolder url="file://$MODULE_DIR$/temp" />
       <excludeFolder url="file://$MODULE_DIR$/tmp" />
     </content>
     <orderEntry type="inheritedJdk" />
