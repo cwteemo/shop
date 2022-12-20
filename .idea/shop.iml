@@ -8,6 +8,7 @@
       <sourceFolder url="file://$MODULE_DIR$/admin-suppermail/app" isTestSource="false" packagePrefix="app\" />
       <excludeFolder url="file://$MODULE_DIR$/.tmp" />
       <excludeFolder url="file://$MODULE_DIR$/admin-suppermail/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/admin-suppermail/vendor/firebase/php-jwt" />
       <excludeFolder url="file://$MODULE_DIR$/admin-suppermail/vendor/psr/container" />
       <excludeFolder url="file://$MODULE_DIR$/admin-suppermail/vendor/psr/http-message" />
       <excludeFolder url="file://$MODULE_DIR$/admin-suppermail/vendor/psr/log" />

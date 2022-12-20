@@ -15,6 +15,7 @@
       <path value="$PROJECT_DIR$/admin-suppermail/vendor/topthink/think-orm" />
       <path value="$PROJECT_DIR$/admin-suppermail/vendor/symfony/polyfill-php80" />
       <path value="$PROJECT_DIR$/admin-suppermail/vendor/topthink/framework" />
+      <path value="$PROJECT_DIR$/admin-suppermail/vendor/firebase/php-jwt" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />

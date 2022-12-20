@@ -9,11 +9,11 @@
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
 use think\facade\Route;
-Route::rest([
-    'read'      => ['GET', '/read', 'read'],
-    'edit'      => ['GET', '/edit', 'edit'],
-    'update'    => ['PUT', '', 'update'],
-    'delete'    => ['DELETE', '', 'delete']
-]);
-Route::resource('goods',      'Shopgoods');
-Route::resource('file',      'ShopImg');
+
+Route::get('think', function () {
+    return 'hello,ThinkPHP6!';
+});
+
+Route::get('hello/:name', 'index/hello');
+
+Route::resource('goods','ShopGoods');

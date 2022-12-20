@@ -1,15 +1,24 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => 'v6.0.13',
-        'version' => '6.0.13.0',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => NULL,
+        'reference' => '1607f9e00f3737802dc4c8bbe3bfadd1c54d2543',
         'name' => 'topthink/think',
         'dev' => true,
     ),
     'versions' => array(
+        'firebase/php-jwt' => array(
+            'pretty_version' => 'v6.3.1',
+            'version' => '6.3.1.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../firebase/php-jwt',
+            'aliases' => array(),
+            'reference' => 'ddfaddcb520488b42bca3a75e17e9dd53c3667da',
+            'dev_requirement' => false,
+        ),
         'psr/container' => array(
             'pretty_version' => '1.1.1',
             'version' => '1.1.1.0',
@@ -92,12 +101,12 @@
             'dev_requirement' => false,
         ),
         'topthink/think' => array(
-            'pretty_version' => 'v6.0.13',
-            'version' => '6.0.13.0',
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => NULL,
+            'reference' => '1607f9e00f3737802dc4c8bbe3bfadd1c54d2543',
             'dev_requirement' => false,
         ),
         'topthink/think-helper' => array(

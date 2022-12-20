@@ -2,15 +2,19 @@
 
 namespace app\lib;
 
+use thans\jwt\facade\JWTAuth;
+use think\Collection;
 use think\Exception;
-//use think\Log;
+use think\Response;
+use think\response\Json;
 
 /**
- * Class Res
- * @package app\index\lib
- * 返回统一结构类
+ * Created by PhpStorm.
+ * User: sMac
+ * Date: 2018/8/21
+ * Time: 下午8:57
  */
-class Res extends Exception
+class Res
 {
     public $msg;
 
@@ -32,16 +36,99 @@ class Res extends Exception
 
     }
 
-    public static function reLogin()
+    /**
+     * 转字符串（所有的结果返回都会调用）
+     *
+     * @return string
+     */
+    function __toString()
     {
-        return new Res(null, '', 10001);
+        return json_encode($this->toArray());
     }
 
-    public function __destruct()
+    /**
+     * 转数组
+     *
+     * @return array
+     */
+    function toArray()
     {
-        //$date = date("Y-m-d H:i:s", time());
-        //Log::record('[request_time][' . $date . '][ RETURN_JSON ] ' . json_encode([$this->data, $this->msg, $this->errorCode]), 'info');
 
+        return [
+            'msg' => $this->msg,
+            'errorCode' => $this->errorCode,
+            'data' => $this->data
+        ];
+    }
+
+    /**
+     * 设置 response header
+     *
+     * @param $token
+     * @param $bearer
+     */
+    public static function setAuthentication($token, $bearer='Bearer')
+    {
+        header("Authorization:${bearer} $token");
+    }
+
+    /**
+     * 告诉前端 token 失效
+     *
+     * @param $set_auth
+     * @return array
+     */
+    public static function invalidateToken($set_auth=true)
+    {
+        try {
+            // 刷新使之前的 token 失效
+            $token = JWTAuth::token();
+            if (JWTAuth::validate($token)) {
+                JWTAuth::invalidate($token);
+            }
+        }
+        finally {
+            if ($set_auth) {
+                static::setAuthentication("invalidate", "");
+            }
+        }
+        return [];
+    }
+
+    /**
+     * 返回错误
+     *
+     * @param string $msg
+     * @param int $errorCode
+     * @param $data
+     * @return Res
+     */
+    public static function error($msg="", $errorCode=1, $data=[])
+    {
+        return new Res($data, $msg, $errorCode);
+    }
+
+    /**
+     * 重新登录
+     *
+     * @param $msg
+     */
+    public static function reLogin($msg="登录状态已失效")
+    {
+        static::returnErr($msg,10001);
+    }
+
+    /**
+     * 终止程序，返回错误
+     *
+     * @param int $errorCode
+     * @param string $msg
+     * @param $data
+     */
+    public static function returnErr($msg="", $errorCode=1, $data=[])
+    {
+        // abort(Json::create(static::error($msg, $errorCode), 'json'));
+        abort(Response::create(static::error($msg, $errorCode, $data), 'Json'));
     }
 
 }
